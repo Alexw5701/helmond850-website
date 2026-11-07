@@ -64,4 +64,49 @@
     document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
   }
 
+  const data={
+    helmond:["Nederland · Helmond","Helmond is het vertrekpunt","Van deze Brabantse stad lopen eeuwenoude en nieuwe verbindingen naar de wereld.","geschiedenis.html"],
+    mechelen:["België · Mechelen","Een historische verbinding met België","Helmond kende historische contacten met Mechelen en latere internationale uitwisselingen.","helmonders.html#mechelen"],
+    polen:["Polen · Zielona Góra","Een voormalige stedenband","Helmond en Zielona Góra onderhielden een stedenband die in 2014 formeel eindigde.","helmonders.html#polen"],
+    afrika:["West- en Centraal-Afrika","Vlisco in de Afrikaanse modewereld","In Helmond geproduceerde stoffen kregen in West- en Centraal-Afrika een eigen culturele betekenis.","gemaakt-in-helmond.html#vlisco"],
+    indonesie:["Indonesië","De wortels van de waxprint","Indonesische batik vormde een belangrijke inspiratiebron voor de latere Helmondse waxprints.","gemaakt-in-helmond.html#vlisco"],
+    tokio:["Japan · Tokio","Helmond op het Olympisch podium","Janssen-Fritsen leverde turntoestellen voor onder meer de Olympische Spelen in Tokio.","gemaakt-in-helmond.html#janssen"],
+    nicaragua:["Nicaragua · San Marcos","Samenwerking met San Marcos","De Stichting Helmond–San Marcos steunt al tientallen jaren inwoners van San Marcos.","helmonders.html#san-marcos"],
+    brazilie:["Brazilië · Amazonegebied","Internationale betrokkenheid","Vanuit Helmond werd het werk van pater Toon Gruijters in het Amazonegebied ondersteund.","helmonders.html#brazilie"],
+    ghana:["Ghana","Stiphout en Ghana","MOV Stiphout ondersteunt diverse initiatieven in Ghana.","helmonders.html#ghana"],
+    suriname:["Suriname","De koloniale geschiedenis","De wereldverbindingen van Helmond omvatten ook kolonialisme en slavernij. Lees de historische context.","naam-helmond.html#suriname"]
+  };
+  const pins=[...document.querySelectorAll('[data-pin]')];
+  if(pins.length){
+    pins.forEach(pin=>pin.addEventListener('click',()=>{
+      const item=data[pin.dataset.pin];if(!item)return;
+      pins.forEach(p=>{const selected=p===pin;p.classList.toggle('selected',selected);p.setAttribute('aria-pressed',String(selected));});
+      document.getElementById('map-place').textContent=item[0];
+      document.getElementById('map-title').textContent=item[1];
+      document.getElementById('map-description').textContent=item[2];
+      document.getElementById('map-link').href=item[3];
+    }));
+  }
+  const worldSearch=document.getElementById('world-search');
+  const worldCards=[...document.querySelectorAll('[data-world-category]')];
+  if(worldSearch&&worldCards.length){
+    let category='alles';
+    const update=()=>{
+      const term=worldSearch.value.trim().toLocaleLowerCase('nl-NL');
+      let visible=0;
+      worldCards.forEach(card=>{
+        const show=(category==='alles'||card.dataset.worldCategory===category)&&(!term||card.dataset.worldText.includes(term));
+        card.hidden=!show;if(show)visible++;
+      });
+      document.getElementById('world-count').textContent=visible+' van '+worldCards.length+' wereldverhalen';
+      document.getElementById('world-empty').hidden=visible!==0;
+    };
+    document.querySelectorAll('[data-category]').forEach(b=>b.addEventListener('click',()=>{
+      category=b.dataset.category;
+      document.querySelectorAll('[data-category]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});
+      update();
+    }));
+    worldSearch.addEventListener('input',update);update();
+  }
+
 })();
