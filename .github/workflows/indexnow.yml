@@ -1,0 +1,53 @@
+name: IndexNow - gewijzigde pagina's melden
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'sitemap.xml'
+      - 'f5cde794c998f00fa0c76d8a79007812.txt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Stuur gewijzigde URLs naar IndexNow
+        shell: bash
+        env:
+          INDEXNOW_KEY: f5cde794c998f00fa0c76d8a79007812
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            mapfile -t changed < <(find . -maxdepth 1 -name '*.html' -printf '%f\n' | sort)
+          else
+            mapfile -t changed < <(git diff-tree --no-commit-id --name-only -r HEAD -- '*.html')
+          fi
+          urls=()
+          for path in "${changed[@]}"; do
+            [ -f "$path" ] || continue
+            if [ "$path" = "index.html" ]; then
+              urls+=("https://helmond850.nl/")
+            else
+              urls+=("https://helmond850.nl/$path")
+            fi
+          done
+          if [ "${#urls[@]}" -eq 0 ]; then
+            echo "Geen gewijzigde HTML-pagina's."
+            exit 0
+          fi
+          key_url="https://helmond850.nl/$INDEXNOW_KEY.txt"
+          key_content="$(curl --fail --silent --show-error --location --retry 12 --retry-delay 20 --retry-all-errors "$key_url")"
+          if [ "$key_content" != "$INDEXNOW_KEY" ]; then
+            echo "IndexNow sleutelbestand is nog niet online of onjuist."
+            exit 1
+          fi
+          json_urls="$(printf '%s\n' "${urls[@]}" | jq -R . | jq -sc .)"
+          jq -n --arg host "helmond850.nl" --arg key "$INDEXNOW_KEY" --arg keyLocation "$key_url" --argjson urlList "$json_urls" '{host:$host,key:$key,keyLocation:$keyLocation,urlList:$urlList}' > indexnow-payload.json
+          curl --fail --silent --show-error --retry 3 --retry-delay 15 -X POST 'https://api.indexnow.org/indexnow' -H 'Content-Type: application/json; charset=utf-8' --data-binary @indexnow-payload.json
+          echo "IndexNow melding ingediend voor ${#urls[@]} gewijzigde pagina(s)."
