@@ -60,3 +60,53 @@ a{color:inherit;text-underline-offset:3px}button,input{font:inherit}button:focus
 @media(max-width:1100px){.world-topics{grid-template-columns:repeat(2,1fr)}.world-cards{grid-template-columns:repeat(2,1fr)}.primary-nav{gap:14px}.primary-nav a{font-size:12px}}
 @media(max-width:850px){.world-hero-grid,.clock-inner,.world-feature,.world-bottom{grid-template-columns:1fr}.world-hero-grid{padding:65px 0}.world-hero-visual{max-width:650px;margin:auto}.world-hero h1{font-size:clamp(3.4rem,9vw,5rem)}.world-stamp{right:2%}.world-chapter{grid-template-columns:140px 1fr;gap:25px}}
 @media(max-width:620px){.world-topics,.world-cards,.world-name-grid,.world-history-grid,.world-history-links{grid-template-columns:1fr}.world-hero h1{font-size:clamp(3rem,12vw,4.5rem)}.world-hero-visual{margin-top:25px}.world-stamp{width:95px;height:95px;font-size:38px}.world-stamp small{font-size:6px}.world-topics>a{min-height:210px}.world-pin{height:14px;width:14px;border-width:1px;box-shadow:0 0 0 4px #f4d18b56}.world-chapter{grid-template-columns:1fr;gap:6px}.chapter-index{font-size:38px}.clock-grid{gap:5px}.clock-grid>div{padding:12px 2px}.clock-grid strong{font-size:clamp(25px,7vw,36px)}.clock-grid span{font-size:8px}}
+
+/* Uitgelicht wereldverhaal november 2026 — apart artikel, toegankelijk en mobiel */
+.monthly-feature{background:#eaf0ea;border-top:1px solid #d4ddd5;border-bottom:1px solid #d4ddd5}
+.monthly-feature-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:54px}
+.monthly-feature-art{position:relative;min-width:0}
+.monthly-feature-art img{width:100%;display:block;border-radius:5px;box-shadow:0 25px 40px #1a334a20}
+.monthly-feature-tag{position:absolute;left:0;top:22px;background:#edc386;color:#183b4b;padding:9px 15px;font-size:10px;font-weight:850;letter-spacing:.1em}
+.monthly-feature-copy h2{font-size:clamp(2.6rem,4.6vw,4.7rem);margin:5px 0 25px}
+.monthly-feature-copy h2 em{color:#b17852}.monthly-feature-copy p{color:#4f6870;line-height:1.8}
+.monthly-feature-lead{font-size:18px!important;color:#264653!important}
+.monthly-feature-copy .btn{margin-top:18px}
+.monthly-hero{background:radial-gradient(circle at 76% 30%,#335d64,#173844 60%,#102a39);color:white;overflow:hidden}
+.monthly-hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:45px;align-items:center;padding:82px 0 77px}
+.monthly-hero-copy h1{font-size:clamp(3.2rem,6vw,6.4rem);line-height:1.06;letter-spacing:-.052em;margin:15px 0 25px}
+.monthly-hero-copy h1 em{color:#edc386}
+.monthly-kicker{color:#edc386;font-weight:800;letter-spacing:.16em;font-size:12px}
+.monthly-intro{font-size:clamp(16px,1.6vw,19px);line-height:1.8;color:#dce8e6}
+.monthly-date{font-size:12px;color:#afc8c5;margin:34px 0 0}
+.monthly-hero-art{margin:0}.monthly-hero-art img{display:block;width:100%;border-radius:5px;box-shadow:0 30px 40px #081c282f}
+.monthly-hero-art figcaption{font-size:11px;margin-top:13px;color:#c3d4d2;line-height:1.6}
+.monthly-facts{background:#ecdfca;border-bottom:1px solid #d6c9b3}
+.monthly-facts-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.monthly-facts-grid>div{padding:28px 18px;border-right:1px solid #d5c4ab;text-align:center}
+.monthly-facts-grid>div:last-child{border:0}
+.monthly-facts-grid strong{display:block;font:400 clamp(31px,3.7vw,50px)/1.1 Georgia,serif;color:#163a46;white-space:nowrap}
+.monthly-facts-grid span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#816448;margin-top:8px;font-weight:800}
+.monthly-body-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(255px,.85fr);gap:65px;align-items:start}
+.monthly-prose{max-width:760px}.monthly-prose p{color:#49626b;font-size:16px;line-height:1.95;margin:0 0 25px}
+.monthly-prose .monthly-opening{font:italic clamp(20px,2.4vw,27px)/1.6 Georgia,serif;color:#294f58;margin-bottom:45px}
+.monthly-prose h2{font-size:clamp(31px,3.5vw,43px);margin:55px 0 19px}
+.monthly-side{position:sticky;top:116px}
+.monthly-side-panel{padding:25px;background:white;border:1px solid #e1ddd3;margin-bottom:20px}
+.monthly-side-panel h3{font-family:Georgia,serif}
+.monthly-side-timeline{padding:0 0 0 18px;margin:0}
+.monthly-side-timeline li{padding:0 0 21px 9px;color:#506a72;font-size:13px;line-height:1.7}
+.monthly-side-timeline li::marker{color:#ab734a}
+.monthly-side-timeline li strong{display:block;color:#1b3e49;font-size:14px}
+.monthly-side-timeline li span{display:block}
+.monthly-side-country p{font-size:14px;line-height:1.8;color:#506a72}
+.monthly-sourcebox{margin-top:65px;padding:30px;background:#e9efe9;border-left:4px solid #b17c50}
+.monthly-sourcebox h3{font:400 28px Georgia,serif}
+.monthly-sourcebox p{font-size:14px;line-height:1.8}
+.monthly-sourcebox a{font-weight:750;color:#955630}
+.monthly-source-note{font-size:12px!important;color:#697a80!important}
+.monthly-next{display:flex;gap:45px;align-items:center;justify-content:space-between}
+.monthly-next>div{max-width:720px}.monthly-next p{color:#536d73}
+.world-story-highlight{border-top:5px solid #cf9d65;background:#fffaf0}
+.world-pin-highlight{background:#fff2b3;box-shadow:0 0 0 7px #ffd37475;z-index:3}
+@media(max-width:920px){.monthly-feature-grid,.monthly-hero-grid,.monthly-body-grid{grid-template-columns:1fr}.monthly-feature-grid{gap:25px}.monthly-hero-grid{padding:55px 0}.monthly-hero-art{max-width:700px}.monthly-side{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.monthly-side-panel{margin:0}}
+@media(max-width:620px){.monthly-feature{padding:52px 0}.monthly-feature-tag{top:12px;font-size:9px;padding:6px 10px}.monthly-facts-grid{grid-template-columns:repeat(2,1fr)}.monthly-facts-grid>div:nth-child(2){border-right:0}.monthly-facts-grid>div:nth-child(-n+2){border-bottom:1px solid #d5c4ab}.monthly-facts-grid>div{padding:20px 8px}.monthly-facts-grid strong{font-size:34px}.monthly-facts-grid span{font-size:9px}.monthly-side{grid-template-columns:1fr}.monthly-next{display:block}.monthly-next .btn{margin-top:22px}.monthly-hero-grid{padding:46px 0}.monthly-hero-copy h1{font-size:clamp(3rem,11vw,4.2rem)}}

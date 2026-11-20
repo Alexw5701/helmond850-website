@@ -66,6 +66,7 @@
 
   const data={
     helmond:["Nederland · Helmond","Helmond is het vertrekpunt","Van deze Brabantse stad lopen eeuwenoude en nieuwe verbindingen naar de wereld.","geschiedenis.html"],
+    hongarije:["Hongarije · 1956","Van Hongarije naar Helmond","139 Hongaarse mannen kwamen op 21 november 1956 aan bij Someren-Eind. In Helmond vonden ze werk en een nieuw bestaan. Sommigen trokken later naar andere werelddelen.","wereldverhaal-hongaren-1956.html"],
     mechelen:["België · Mechelen","Een historische verbinding met België","Helmond kende historische contacten met Mechelen en latere internationale uitwisselingen.","helmonders.html#mechelen"],
     polen:["Polen · Zielona Góra","Een voormalige stedenband","Helmond en Zielona Góra onderhielden een stedenband die in 2014 formeel eindigde.","helmonders.html#polen"],
     afrika:["West- en Centraal-Afrika","Vlisco in de Afrikaanse modewereld","In Helmond geproduceerde stoffen kregen in West- en Centraal-Afrika een eigen culturele betekenis.","gemaakt-in-helmond.html#vlisco"],
